@@ -1,0 +1,1534 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+
+  <title>Podster Shop — Premium Collection</title>
+
+  <meta name="description"
+        content="Podster Shop: AirPods disponibles en Pachuca. Entrega local. Pedido y pago por WhatsApp."/>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+
+</head>
+  <style>
+    :root{
+      --bg0:#050607;
+      --bg1:#090b0f;
+      --bg2:#0f1218;
+
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.62);
+
+      --line: rgba(255,255,255,.12);
+      --line2: rgba(255,255,255,.18);
+
+      --glass: rgba(255,255,255,.045);
+      --glass2: rgba(255,255,255,.07);
+
+      --shadow: 0 30px 90px rgba(0,0,0,.7);
+      --radius: 22px;
+
+      --accent: rgba(255,255,255,.92);
+      --chip: rgba(255,255,255,.06);
+
+      --ok: rgba(52,211,153,.85);
+      --bad: rgba(248,113,113,.85);
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 900px at 20% 20%, rgba(255,255,255,.08), transparent 62%),
+        radial-gradient(1100px 900px at 80% 10%, rgba(255,255,255,.05), transparent 64%),
+        radial-gradient(900px 700px at 50% 95%, rgba(255,255,255,.04), transparent 70%),
+        linear-gradient(180deg, var(--bg0), var(--bg2));
+      overflow-x:hidden;
+    }
+
+    /* haze fijo para evitar "cortes" */
+    body::before{
+      content:"";
+      position: fixed;
+      inset: -80px;
+      z-index:-1;
+      background:
+        radial-gradient(900px 600px at 10% 15%, rgba(255,255,255,.06), transparent 60%),
+        radial-gradient(900px 600px at 90% 20%, rgba(255,255,255,.05), transparent 60%),
+        radial-gradient(900px 600px at 50% 90%, rgba(255,255,255,.04), transparent 62%);
+      filter: blur(32px);
+      opacity: .95;
+      pointer-events:none;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    .container{ width:min(1180px, 92vw); margin:0 auto; }
+
+    /* ===================== NAV ===================== */
+    .nav{
+      position: sticky; top:0; z-index:80;
+      background: rgba(5,6,7,.55);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 14px 0;
+      gap: 12px;
+    }
+    .brand{
+      display:flex; align-items:center; gap: 10px;
+      min-width: 190px;
+    }
+    .hero-brand{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+}
+.hero-logo{
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.16);
+  background: rgba(255,255,255,.05);
+  object-fit: contain;
+  padding: 6px;
+}
+.hero-brand-text{
+  letter-spacing:.18em;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 12px;
+  color: rgba(255,255,255,.92);
+}
+    .mark{
+      width: 40px; height: 40px; border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.18);
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,.20), transparent 55%),
+        linear-gradient(135deg, rgba(255,255,255,.18), rgba(255,255,255,.02));
+      box-shadow: 0 16px 45px rgba(0,0,0,.5);
+    }
+    .brand b{
+      letter-spacing:.18em;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+    .brand small{
+      display:block;
+      margin-top:3px;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing:.04em;
+    }
+
+    .nav-links{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:flex-end; }
+    .chip{
+      display:inline-flex; align-items:center; gap: 10px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--chip);
+      color: rgba(255,255,255,.78);
+      font-size: 12px;
+      letter-spacing:.08em;
+      text-transform: uppercase;
+      cursor:pointer;
+      user-select:none;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease, color .15s ease;
+    }
+    .chip:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.09);
+      border-color: rgba(255,255,255,.24);
+      color: rgba(255,255,255,.92);
+    }
+
+    .badge{
+      min-width:18px;
+      height:18px;
+      padding: 0 6px;
+      border-radius: 999px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-size: 11px;
+      font-weight: 900;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(0,0,0,.25);
+      color: rgba(255,255,255,.92);
+      letter-spacing: 0;
+      text-transform:none;
+    }
+.brand-logo{
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(255,255,255,.06);
+  object-fit: contain;
+  padding: 6px;
+  box-shadow: 0 16px 45px rgba(0,0,0,.5);
+}
+    /* ===================== HERO ===================== */
+    header.hero{
+      padding: 22px 0 10px;
+    }
+    .hero-shell{
+      border-radius: 26px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position: relative;
+    }
+    .hero-shell::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(900px 420px at 20% 25%, rgba(255,255,255,.08), transparent 60%),
+        radial-gradient(900px 420px at 80% 20%, rgba(255,255,255,.06), transparent 60%);
+      filter: blur(8px);
+      pointer-events:none;
+      opacity:.95;
+    }
+
+    .hero-top{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 16px;
+      padding: 18px 18px 0;
+      position:relative;
+    }
+    .mini-nav{
+      display:flex; gap: 18px; flex-wrap:wrap;
+      color: rgba(255,255,255,.68);
+      font-size: 12px;
+      letter-spacing:.12em;
+      text-transform: uppercase;
+      padding: 10px 6px;
+    }
+    .mini-nav a{ opacity:.85; transition: opacity .15s ease; }
+    .mini-nav a:hover{ opacity:1; }
+    .buy{
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.06);
+      color: rgba(255,255,255,.9);
+      font-size: 12px;
+      letter-spacing:.12em;
+      text-transform: uppercase;
+      cursor:pointer;
+    }
+    .buy:hover{ background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.26); }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 18px;
+      padding: 10px 18px 18px;
+      position:relative;
+    }
+    @media (max-width: 980px){
+      .hero-grid{ grid-template-columns: 1fr; }
+    }
+
+    .big-title{
+      font-size: clamp(46px, 8.5vw, 92px);
+      font-weight: 950;
+      letter-spacing: .02em;
+      margin: 10px 0 8px;
+      line-height: .9;
+      text-transform: uppercase;
+    }
+    .tagline{
+      color: rgba(255,255,255,.72);
+      letter-spacing:.08em;
+      font-size: 12px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .hero-copy{
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 66ch;
+      font-size: 14px;
+    }
+    .cta-row{ display:flex; gap: 10px; flex-wrap:wrap; margin-top: 18px; }
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: rgba(255,255,255,.92);
+      cursor:pointer;
+      user-select:none;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      font-weight: 850;
+      letter-spacing:.06em;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.10);
+      border-color: rgba(255,255,255,.25);
+    }
+    .btn.primary{
+      background: rgba(255,255,255,.92);
+      color: rgba(0,0,0,.92);
+      border-color: rgba(255,255,255,.92);
+    }
+    .btn.primary:hover{ background: rgba(255,255,255,.86); }
+
+    /* HERO PRODUCT area */
+    .stage{
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.25);
+      padding: 14px;
+      position: relative;
+      overflow:hidden;
+    }
+    .stage::before{
+      content:"";
+      position:absolute; inset:-40px;
+      background:
+        radial-gradient(520px 300px at 50% 20%, rgba(255,255,255,.10), transparent 60%),
+        radial-gradient(520px 340px at 50% 90%, rgba(255,255,255,.05), transparent 65%);
+      filter: blur(18px);
+      opacity:.9;
+      pointer-events:none;
+    }
+    .stage-inner{ position:relative; }
+
+    .product-wrap{
+      display:grid;
+      place-items:center;
+      padding: 8px 0 2px;
+    }
+    .pedestal{
+      width: 78%;
+      height: 18px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      filter: blur(0.2px);
+      margin-top: 10px;
+      box-shadow: 0 18px 70px rgba(0,0,0,.65);
+    }
+
+    .product-img{
+      width: min(320px, 72vw);
+      aspect-ratio: 1/1;
+      object-fit: contain;
+      filter: drop-shadow(0 40px 60px rgba(0,0,0,.7));
+      transform: translateY(6px);
+      opacity: 1;
+      transition: opacity .45s ease, transform .45s ease;
+    }
+    .product-img.is-fading{
+      opacity: 0;
+      transform: translateY(16px);
+    }
+
+    .stage-controls{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .icon-btn{
+      width: 44px; height: 44px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      cursor:pointer;
+      display:grid;
+      place-items:center;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+    }
+    .icon-btn:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.10);
+      border-color: rgba(255,255,255,.24);
+    }
+    .dots{
+      display:flex;
+      gap: 8px;
+      align-items:center;
+      justify-content:center;
+      flex: 1;
+    }
+    .dot{
+      width: 26px;
+      height: 3px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.16);
+      border: 1px solid rgba(255,255,255,.10);
+      cursor:pointer;
+    }
+    .dot.active{
+      background: rgba(255,255,255,.85);
+      border-color: rgba(255,255,255,.30);
+    }
+    .stage-caption{
+      margin-top: 10px;
+      color: rgba(255,255,255,.74);
+      font-size: 12px;
+      letter-spacing:.10em;
+      text-transform: uppercase;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      flex-wrap:wrap;
+    }
+
+    /* ===================== PRODUCTS ===================== */
+    section{ padding: 14px 0 30px; }
+    .section-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap: 14px;
+      margin: 10px 0 12px;
+    }
+    .section-head h2{
+      margin:0;
+      font-size: 18px;
+      letter-spacing:.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.92);
+    }
+    .hint{
+      color: var(--muted);
+      font-size: 13px;
+      line-height:1.35;
+      max-width: 72ch;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    @media (max-width: 980px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      padding: 16px;
+      box-shadow: 0 18px 55px rgba(0,0,0,.35);
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+    }
+    .card:hover{
+      transform: translateY(-3px);
+      background: rgba(255,255,255,.05);
+      border-color: rgba(255,255,255,.18);
+    }
+    .toprow{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+    }
+    .tag{
+      font-size: 11px;
+      letter-spacing:.12em;
+      text-transform: uppercase;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.20);
+      color: rgba(255,255,255,.75);
+    }
+    .tag.ok{ border-color: rgba(52,211,153,.35); background: rgba(52,211,153,.08); color: rgba(255,255,255,.86); }
+    .tag.bad{ border-color: rgba(248,113,113,.38); background: rgba(248,113,113,.08); color: rgba(255,255,255,.86); }
+
+    .prod{ margin-top: 12px; display:grid; gap: 10px; }
+    .prod h3{
+      margin:0;
+      font-size: 18px;
+      letter-spacing:.06em;
+      text-transform: uppercase;
+    }
+    .price{
+      font-size: 22px;
+      font-weight: 950;
+      letter-spacing:.06em;
+      text-transform: uppercase;
+    }
+    .local-note{
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing:.10em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+    .actions{
+      display:flex;
+      gap: 10px;
+      flex-wrap:wrap;
+      margin-top: 8px;
+    }
+    .disabled{
+      opacity:.55;
+      filter: grayscale(.1);
+    }
+
+    /* ===================== MODALS ===================== */
+    .overlay{
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.58);
+      backdrop-filter: blur(14px);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding: 18px;
+      z-index: 9999;
+    }
+    .overlay.show{ display:flex; }
+
+    .modal{
+      width: min(820px, 96vw);
+      max-height: min(84vh, 820px);
+      overflow:auto;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(8,10,12,.78);
+      box-shadow: var(--shadow);
+    }
+
+    .modal-head{
+      position: sticky;
+      top: 0;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      padding: 14px 14px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      background: rgba(8,10,12,.86);
+      backdrop-filter: blur(16px);
+    }
+    .modal-head b{
+      font-size: 12px;
+      letter-spacing:.18em;
+      text-transform: uppercase;
+    }
+    .x{
+      width: 44px;
+      height: 44px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: rgba(255,255,255,.92);
+      cursor:pointer;
+      font-weight: 950;
+    }
+    .x:hover{ background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.24); }
+    .modal-body{ padding: 14px; }
+
+    /* Features modal layout */
+    .feat-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 980px){
+      .feat-grid{ grid-template-columns: 1fr; }
+    }
+
+    .photo-panel{
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      overflow:hidden;
+      position:relative;
+      min-height: 320px;
+    }
+    .photo-panel::before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(600px 380px at 30% 20%, rgba(255,255,255,.08), transparent 60%),
+        radial-gradient(600px 380px at 80% 90%, rgba(255,255,255,.05), transparent 64%);
+      pointer-events:none;
+      filter: blur(10px);
+      opacity:.95;
+    }
+
+    .main-photo{
+      width: 100%;
+      height: 320px;
+      object-fit: contain;
+      display:block;
+      position:relative;
+      z-index:1;
+      padding: 12px;
+      filter: drop-shadow(0 26px 40px rgba(0,0,0,.65));
+      transition: opacity .35s ease, transform .35s ease;
+    }
+    .main-photo.is-fading{ opacity:0; transform: translateY(10px); }
+
+    .thumbs{
+      display:flex;
+      gap: 10px;
+      padding: 12px;
+      border-top: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      position:relative;
+      z-index:2;
+    }
+    .thumb{
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      overflow:hidden;
+      cursor:pointer;
+      display:grid;
+      place-items:center;
+    }
+    .thumb img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display:block;
+      opacity:.95;
+    }
+    .thumb.active{
+      border-color: rgba(255,255,255,.30);
+      background: rgba(255,255,255,.08);
+    }
+
+    .feat-list{
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      padding: 12px;
+    }
+    .feat-item{
+      display:flex;
+      gap: 10px;
+      align-items:flex-start;
+      padding: 12px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.20);
+      margin-bottom: 10px;
+    }
+    .feat-item:last-child{ margin-bottom:0; }
+    .ico{
+      width: 34px;
+      height: 34px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      display:grid;
+      place-items:center;
+      flex: 0 0 auto;
+    }
+    .feat-item b{
+      display:block;
+      font-size: 12px;
+      letter-spacing:.12em;
+      text-transform: uppercase;
+    }
+    .feat-item p{
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    /* Cart modal */
+    .cart-items{ display:grid; gap: 10px; }
+    .cart-item{
+      display:flex; align-items:center; justify-content:space-between; gap: 12px; flex-wrap:wrap;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.22);
+      border-radius: 18px;
+      padding: 12px;
+    }
+    .cart-left{ display:grid; gap: 4px; min-width: 220px; }
+    .cart-left b{ font-size: 13px; letter-spacing:.10em; text-transform: uppercase; }
+    .cart-left small{ color: var(--muted); font-size: 12px; letter-spacing:.06em; }
+
+    .qty{
+      display:flex; align-items:center; gap: 8px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      border-radius: 999px;
+      padding: 6px 8px;
+    }
+    .qty button{
+      width: 34px; height: 34px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color: rgba(255,255,255,.92);
+      font-weight: 950;
+      cursor:pointer;
+    }
+    .qty button:hover{ background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.22); }
+    .qty span{ min-width: 18px; text-align:center; font-weight: 900; }
+
+    .row{
+      display:flex; align-items:center; justify-content:space-between; gap: 12px; flex-wrap:wrap;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255,255,255,.10);
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing:.12em;
+      text-transform: uppercase;
+    }
+    .row b{
+      color: rgba(255,255,255,.92);
+      font-size: 18px;
+      letter-spacing:.06em;
+      text-transform:none;
+    }
+
+    .foot-note{
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing:.08em;
+      text-transform: uppercase;
+      line-height: 1.5;
+    }
+
+    /* TOAST */
+    .toast{
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,.75);
+      border: 1px solid rgba(255,255,255,.14);
+      backdrop-filter: blur(14px);
+      padding: 10px 12px;
+      border-radius: 16px;
+      box-shadow: 0 18px 60px rgba(0,0,0,.55);
+      color: rgba(255,255,255,.92);
+      font-size: 12px;
+      letter-spacing:.08em;
+      text-transform: uppercase;
+      display:none;
+      max-width: min(560px, 92vw);
+      text-align:center;
+      z-index: 10000;
+    }
+
+    footer{
+      padding: 18px 0 42px;
+      color: var(--muted);
+      border-top: 1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.18);
+      margin-top: 18px;
+    }
+    .footer-inner{
+      display:flex; align-items:center; justify-content:space-between; gap: 12px; flex-wrap:wrap;
+    }
+    .footer-inner b{
+      letter-spacing:.18em;
+      text-transform: uppercase;
+      font-size: 12px;
+      color: rgba(255,255,255,.9);
+    }
+    .footer-inner small{
+      display:block;
+      margin-top: 6px;
+      letter-spacing:.08em;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+
+    /* Icons (SVG) */
+    svg{ display:block; }
+    .svg-18{ width:18px; height:18px; }
+    .svg-20{ width:20px; height:20px; }
+    .svg-22{ width:22px; height:22px; }
+    .svg-stroke{
+      fill:none;
+      stroke: rgba(255,255,255,.88);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .svg-muted{ stroke: rgba(255,255,255,.70); }
+  </style>
+</head>
+
+<body>
+
+  <!-- SVG ICONS -->
+  <svg width="0" height="0" style="position:absolute">
+    <symbol id="i-cart" viewBox="0 0 24 24">
+      <path class="svg-stroke" d="M6 6h15l-2 9H7L6 6Z"/>
+      <path class="svg-stroke" d="M6 6 5 3H2"/>
+      <path class="svg-stroke" d="M9 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/>
+      <path class="svg-stroke" d="M17 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/>
+    </symbol>
+
+    <symbol id="i-wa" viewBox="0 0 24 24">
+      <path class="svg-stroke" d="M20 11.5a7.5 7.5 0 0 1-11.8 6.2L4 19l1.4-3.9A7.5 7.5 0 1 1 20 11.5Z"/>
+      <path class="svg-stroke" d="M9.2 9.2c.6-1 1.1-1 1.4-.9.3.1.6.7.8 1.2.2.5.2.6.1.8-.1.2-.2.4-.4.6-.2.2-.3.3-.2.5.1.2.4.8.9 1.3.5.5 1.1.9 1.3 1 .2.1.3.1.5-.1.2-.2.4-.4.6-.4.2-.1.3 0 .8.2.5.2 1.1.5 1.2.8.1.3.1.8-.9 1.4"/>
+    </symbol>
+
+    <symbol id="i-info" viewBox="0 0 24 24">
+      <path class="svg-stroke" d="M12 17v-6"/>
+      <path class="svg-stroke" d="M12 8h.01"/>
+      <path class="svg-stroke" d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+    </symbol>
+
+    <symbol id="i-plus" viewBox="0 0 24 24">
+      <path class="svg-stroke" d="M12 5v14"/>
+      <path class="svg-stroke" d="M5 12h14"/>
+    </symbol>
+
+    <symbol id="i-bell" viewBox="0 0 24 24">
+      <path class="svg-stroke" d="M6 8a6 6 0 1 1 12 0c0 7 3 7 3 7H3s3 0 3-7"/>
+      <path class="svg-stroke" d="M10 19a2 2 0 0 0 4 0"/>
+    </symbol>
+
+    <symbol id="i-left" viewBox="0 0 24 24">
+      <path class="svg-stroke" d="M15 18 9 12l6-6"/>
+    </symbol>
+    <symbol id="i-right" viewBox="0 0 24 24">
+      <path class="svg-stroke" d="M9 18l6-6-6-6"/>
+    </symbol>
+
+    <symbol id="i-noise" viewBox="0 0 24 24">
+      <path class="svg-stroke" d="M4 10v4"/>
+      <path class="svg-stroke" d="M8 8v8"/>
+      <path class="svg-stroke" d="M12 6v12"/>
+      <path class="svg-stroke" d="M16 8v8"/>
+      <path class="svg-stroke" d="M20 10v4"/>
+    </symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24">
+      <path class="svg-stroke" d="M12 14a3 3 0 0 0 3-3V7a3 3 0 0 0-6 0v4a3 3 0 0 0 3 3Z"/>
+      <path class="svg-stroke" d="M19 11a7 7 0 0 1-14 0"/>
+      <path class="svg-stroke" d="M12 18v3"/>
+    </symbol>
+    <symbol id="i-battery" viewBox="0 0 24 24">
+      <path class="svg-stroke" d="M3 10v4a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2Z"/>
+      <path class="svg-stroke" d="M22 12h1"/>
+      <path class="svg-stroke svg-muted" d="M6 12h7"/>
+    </symbol>
+    <symbol id="i-case" viewBox="0 0 24 24">
+      <path class="svg-stroke" d="M7 7h10a3 3 0 0 1 3 3v7a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-7a3 3 0 0 1 3-3Z"/>
+      <path class="svg-stroke" d="M8 7a4 4 0 0 1 8 0"/>
+      <path class="svg-stroke svg-muted" d="M8 12h8"/>
+    </symbol>
+    <symbol id="i-link" viewBox="0 0 24 24">
+      <path class="svg-stroke" d="M10 13a5 5 0 0 1 0-7l1-1a5 5 0 0 1 7 7l-1 1"/>
+      <path class="svg-stroke" d="M14 11a5 5 0 0 1 0 7l-1 1a5 5 0 0 1-7-7l1-1"/>
+    </symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24">
+      <path class="svg-stroke" d="M8 2h8a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z"/>
+      <path class="svg-stroke svg-muted" d="M10 19h4"/>
+    </symbol>
+  </svg>
+
+  <!-- NAV -->
+  <div class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <img class="brand-logo" src="assets/podster-logo.png" alt="Podster Shop logo">
+        <div>
+          <b>Podster Shop</b>
+          <small>AirPods & Accesorios • Pachuca</small>
+        </div>
+      </div>
+
+      <div class="nav-links">
+        <a class="chip" href="#productos">Home</a>
+        <a class="chip" href="#productos">Collection</a>
+
+        <button class="chip" id="openCartBtn" type="button" aria-haspopup="dialog" aria-controls="cartOverlay">
+          <svg class="svg-18" viewBox="0 0 24 24"><use href="#i-cart"/></svg>
+          Carrito <span class="badge" id="cartCount">0</span>
+        </button>
+
+        <a class="chip" id="navWA" href="#" target="_blank" rel="noopener">
+          <svg class="svg-18" viewBox="0 0 24 24"><use href="#i-wa"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container">
+      <div class="hero-shell">
+        <div class="hero-top">
+<div class="hero-brand">
+  <img class="hero-logo" src="assets/podster-logo.png" alt="Podster Shop logo">
+  <div class="hero-brand-text">Podster Shop</div>
+</div>
+
+          <div class="mini-nav">
+            <a href="#productos">Home</a>
+            <a href="#productos">About</a>
+            <a href="#productos">Collection</a>
+          </div>
+
+          <button class="buy" id="heroBuy">Buy</button>
+        </div>
+
+        <div class="hero-grid">
+          <div>
+            <div class="tagline">Eleva tu audio • Entrega local • Pedido y pago por WhatsApp</div>
+            <div class="big-title">PODSTER</div>
+            <div class="hero-copy">
+              AirPods listos para ti. Arma tu carrito y manda el pedido por WhatsApp.
+              <br><br>
+              <span style="color:rgba(255,255,255,.78); letter-spacing:.10em; text-transform:uppercase; font-size:12px;">
+                Entrega solo local en Pachuca (sin envíos).
+              </span>
+            </div>
+
+            <div class="cta-row">
+              <button class="btn primary" id="openCartBtn2">
+                <svg class="svg-18" viewBox="0 0 24 24"><use href="#i-cart"/></svg>
+                Abrir carrito
+              </button>
+
+              <button class="btn" id="goProducts">
+                Collection
+              </button>
+
+              <a class="btn" id="heroWA" href="#" target="_blank" rel="noopener">
+                <svg class="svg-18" viewBox="0 0 24 24"><use href="#i-wa"/></svg>
+                WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <!-- Product stage with transition -->
+          <div class="stage">
+            <div class="stage-inner">
+              <div class="product-wrap" aria-label="Imagen de producto con transición">
+                <img id="heroProductImg" class="product-img" src="assets/hero-airpods-1.png" alt="AirPods (imagen 1)" />
+                <div class="pedestal" aria-hidden="true"></div>
+              </div>
+
+              <div class="stage-controls">
+                <button class="icon-btn" id="heroPrev" type="button" aria-label="Anterior">
+                  <svg class="svg-22" viewBox="0 0 24 24"><use href="#i-left"/></svg>
+                </button>
+
+                <div class="dots" id="heroDots" aria-label="Indicadores"></div>
+
+                <button class="icon-btn" id="heroNext" type="button" aria-label="Siguiente">
+                  <svg class="svg-22" viewBox="0 0 24 24"><use href="#i-right"/></svg>
+                </button>
+              </div>
+
+              <div class="stage-caption">
+                <span id="heroCaption">AirPods Pro 2 • Disponible</span>
+                <span style="opacity:.85;">Swipe / Auto</span>
+              </div>
+            </div>
+          </div>
+          <!-- end stage -->
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- PRODUCTS -->
+  <section id="productos">
+    <div class="container">
+      <div class="section-head">
+        <h2>collection</h2>
+        <div class="hint">
+
+        </div>
+      </div>
+
+      <div class="grid">
+        <!-- PRO 2 -->
+        <article class="card" data-sku="pro2">
+          <div class="toprow">
+            <div class="tag ok">Disponible</div>
+            <div class="tag">AirPods</div>
+          </div>
+
+          <div class="prod">
+            <h3>AirPods Pro 2</h3>
+            <div class="price">$350 MXN</div>
+            <div class="local-note">Entrega solo local en Pachuca</div>
+
+            <div class="actions">
+              <button class="btn" type="button" data-open-features="pro2">
+                <svg class="svg-18" viewBox="0 0 24 24"><use href="#i-info"/></svg>
+                Características
+              </button>
+
+              <button class="btn primary addCart" type="button" data-sku="pro2">
+                <svg class="svg-18" viewBox="0 0 24 24"><use href="#i-plus"/></svg>
+                Agregar
+              </button>
+
+              <a class="btn" href="#" target="_blank" rel="noopener" data-wa-direct="AirPods Pro 2">
+                <svg class="svg-18" viewBox="0 0 24 24"><use href="#i-wa"/></svg>
+                WhatsApp
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PRO 3 (agotado) -->
+        <article class="card disabled" data-sku="pro3">
+          <div class="toprow">
+            <div class="tag bad">Agotado</div>
+            <div class="tag">AirPods</div>
+          </div>
+
+          <div class="prod">
+            <h3>AirPods Pro 3</h3>
+            <div class="price">—</div>
+            <div class="local-note">Entrega solo local en Pachuca</div>
+
+            
+    
+            <div class="actions">
+              <button class="btn" type="button" disabled aria-disabled="true"
+  style="opacity:.7; cursor:not-allowed; border-color: rgba(255,255,255,.10); background: rgba(255,255,255,.04);">
+  <svg class="svg-18" viewBox="0 0 24 24" style="opacity:.75;"><use href="#i-info"/></svg>
+  Características
+</button>
+
+              <button class="btn" type="button" disabled style="opacity:.7; cursor:not-allowed;">Agotado</button>
+
+              
+              </button>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 4ta gen (agotado) -->
+        <article class="card disabled" data-sku="gen4">
+          <div class="toprow">
+            <div class="tag bad">Agotado</div>
+            <div class="tag">AirPods</div>
+          </div>
+
+          <div class="prod">
+            <h3>AirPods 4ta Gen</h3>
+            <div class="price">—</div>
+            <div class="local-note">Entrega solo local en Pachuca</div>
+
+            <div class="actions">
+              <button class="btn" type="button" disabled aria-disabled="true"
+  style="opacity:.7; cursor:not-allowed; border-color: rgba(255,255,255,.10); background: rgba(255,255,255,.04);">
+  <svg class="svg-18" viewBox="0 0 24 24" style="opacity:.75;"><use href="#i-info"/></svg>
+  Características
+</button>
+
+              <button class="btn" type="button" disabled style="opacity:.7; cursor:not-allowed;">Agotado</button>
+
+
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        <b>Podster Shop</b>
+        <small>WhatsApp 7713610634 • Entrega local • Pago por WhatsApp • Instagram  • @podster_shop • TikTok • @podster.shop <small>
+      </div>
+      <div class="nav-links">
+        <a class="chip" id="footWA" href="#" target="_blank" rel="noopener">
+          <svg class="svg-18" viewBox="0 0 24 24"><use href="#i-wa"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FEATURES MODAL -->
+  <div class="overlay" id="featuresOverlay" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal">
+      <div class="modal-head">
+        <b id="featuresTitle">Características</b>
+        <button class="x" id="closeFeatures" type="button" aria-label="Cerrar">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="feat-grid">
+          <!-- Photos -->
+          <div class="photo-panel">
+            <img id="featMainPhoto" class="main-photo" src="assets/pro2-1.png" alt="Foto principal del producto" />
+            <div class="thumbs" id="featThumbs"></div>
+          </div>
+
+          <!-- Feature list -->
+          <div class="feat-list" id="featList"></div>
+        </div>
+
+        <div class="foot-note">
+          Entrega solo local en Pachuca (sin envíos). Pedido y pago por WhatsApp.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CART MODAL -->
+  <div class="overlay" id="cartOverlay" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal">
+      <div class="modal-head">
+        <b>Carrito</b>
+        <div style="display:flex; gap:10px; align-items:center;">
+          <button class="btn" id="clearCart" type="button" style="padding:10px 12px;">
+            Vaciar
+          </button>
+          <button class="x" id="closeCart" type="button" aria-label="Cerrar">✕</button>
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <div class="cart-items" id="cartItems"></div>
+
+        <div class="row">
+          <div>Subtotal</div>
+          <div><b id="cartTotal">$0</b></div>
+        </div>
+
+        <div class="cta-row" style="margin-top:12px;">
+          <button class="btn primary" id="checkoutWA" type="button">
+            <svg class="svg-18" viewBox="0 0 24 24"><use href="#i-wa"/></svg>
+            Enviar a WhatsApp
+          </button>
+          <button class="btn" id="copyOrder" type="button">Copiar</button>
+        </div>
+
+        <div class="foot-note">
+          Entrega solo local. Confirma el pedido y paga por WhatsApp.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    // =================== CONFIG ===================
+    const WHATSAPP = "527713610634"; // 52 + tu número
+    const STORE = "Podster Shop";
+    const LOCAL_ONLY = "Entrega solo local en Pachuca (sin envíos).";
+    const PAY_VIA = "Pago y pedido por WhatsApp.";
+
+    const PRODUCTS = {
+      pro2: { name: "AirPods Pro 2", price: 350, inStock: true },
+      pro3: { name: "AirPods Pro 3", price: 0, inStock: false },
+      gen4:{ name: "AirPods 4ta Gen", price: 0, inStock: false },
+    };
+
+    // HERO slider (transición)
+    const HERO_SLIDES = [
+      { src: "assets/hero-airpods-1.png", caption: "AirPods Pro 2 • Disponible" },
+      { src: "assets/hero-airpods-2.png", caption: "AirPods • Premium look" },
+      { src: "assets/hero-airpods-3.png", caption: "Podster Shop • Local Pachuca" },
+    ];
+
+    // Features: fotos + lista con iconos
+    // (cambia/añade fotos aquí)
+    const FEATURES = {
+      pro2: {
+        title: "AirPods Pro 2",
+        photos: ["assets/pro2-1.png", "assets/pro2-2.png", "assets/pro2-3.png"],
+        items: [
+          { icon:"i-noise", title:"Cancelación activa", desc:"Reduce ruido exterior para enfocarte." },
+          { icon:"i-noise", title:"Modo ambiente", desc:"Escuchas alrededor sin quitártelos." },
+          { icon:"i-mic", title:"Micrófono", desc:"Llamadas y notas de voz claras." },
+          { icon:"i-battery", title:"Batería", desc:"Uso diario con recargas en estuche." },
+          { icon:"i-case", title:"Estuche de carga", desc:"Recargas prácticas durante el día." },
+          { icon:"i-link", title:"Incluye correas", desc:"Accesorio incluido." },
+          { icon:"i-phone", title:"Compatibilidad", desc:"iPhone y Android." },
+        ]
+      },
+      pro3: {
+        title: "AirPods Pro 3 (Agotado)",
+        photos: ["assets/pro3-1.png", "assets/pro3-2.png", "assets/pro3-3.png"],
+        items: [
+          { icon:"i-noise", title:"Cancelación de ruido", desc:"Enfoque para ruido exterior." },
+          { icon:"i-mic", title:"Micrófono", desc:"Llamadas y notas de voz." },
+          { icon:"i-battery", title:"Batería", desc:"Uso diario con estuche." },
+          { icon:"i-phone", title:"Compatibilidad", desc:"iPhone y Android." },
+        ]
+      },
+      gen4: {
+        title: "AirPods 4ta Gen (Agotado)",
+        photos: ["assets/gen4-1.png", "assets/gen4-2.png", "assets/gen4-3.png"],
+        items: [
+          { icon:"i-mic", title:"Micrófono", desc:"Llamadas y notas de voz." },
+          { icon:"i-battery", title:"Batería", desc:"Rinde para el día con estuche." },
+          { icon:"i-phone", title:"Compatibilidad", desc:"iPhone y Android." },
+        ]
+      }
+    };
+
+    // =================== HELPERS ===================
+    const $ = (s) => document.querySelector(s);
+    const $$ = (s) => Array.from(document.querySelectorAll(s));
+    const waLink = (txt) => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(txt)}`;
+
+    const fmtMXN = (n) => {
+      try { return new Intl.NumberFormat("es-MX",{style:"currency",currency:"MXN",maximumFractionDigits:0}).format(n); }
+      catch { return "$" + (n||0); }
+    };
+
+    const toast = (msg) => {
+      const t = $("#toast");
+      t.textContent = msg;
+      t.style.display = "block";
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(() => (t.style.display = "none"), 2000);
+    };
+
+    // =================== MODALS ===================
+    const openOverlay = (id) => {
+      const el = document.getElementById(id);
+      el.classList.add("show");
+      el.setAttribute("aria-hidden","false");
+      document.body.style.overflow = "hidden";
+    };
+    const closeOverlay = (id) => {
+      const el = document.getElementById(id);
+      el.classList.remove("show");
+      el.setAttribute("aria-hidden","true");
+      document.body.style.overflow = "";
+    };
+
+    ["featuresOverlay","cartOverlay"].forEach(id => {
+      const el = document.getElementById(id);
+      el.addEventListener("click", (e) => { if(e.target === el) closeOverlay(id); });
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if(e.key === "Escape"){
+        closeOverlay("featuresOverlay");
+        closeOverlay("cartOverlay");
+      }
+    });
+
+    // =================== HERO TRANSITION ===================
+    const heroImg = $("#heroProductImg");
+    const heroCaption = $("#heroCaption");
+    const dotsWrap = $("#heroDots");
+    let heroIndex = 0;
+    let heroTimer = null;
+
+    const renderHeroDots = () => {
+      dotsWrap.innerHTML = HERO_SLIDES.map((_,i)=>`<div class="dot ${i===heroIndex?'active':''}" data-dot="${i}"></div>`).join("");
+      $$("#heroDots .dot").forEach(d => d.addEventListener("click", () => setHeroSlide(+d.getAttribute("data-dot"), true)));
+    };
+
+    const setHeroSlide = (i, user=false) => {
+      heroIndex = (i + HERO_SLIDES.length) % HERO_SLIDES.length;
+      const slide = HERO_SLIDES[heroIndex];
+
+      heroImg.classList.add("is-fading");
+      setTimeout(() => {
+        heroImg.src = slide.src;
+        heroCaption.textContent = slide.caption;
+        renderHeroDots();
+        heroImg.classList.remove("is-fading");
+      }, 260);
+
+      if(user) restartHeroAuto();
+    };
+
+    const restartHeroAuto = () => {
+      if(heroTimer) clearInterval(heroTimer);
+      heroTimer = setInterval(() => setHeroSlide(heroIndex + 1), 4200);
+    };
+
+    $("#heroPrev").addEventListener("click", () => setHeroSlide(heroIndex - 1, true));
+    $("#heroNext").addEventListener("click", () => setHeroSlide(heroIndex + 1, true));
+    renderHeroDots();
+    restartHeroAuto();
+
+    // =================== FEATURES POPUP (with photos) ===================
+    const featTitle = $("#featuresTitle");
+    const featList = $("#featList");
+    const featMain = $("#featMainPhoto");
+    const featThumbs = $("#featThumbs");
+    let featActivePhotos = [];
+    let featPhotoIndex = 0;
+
+    const setFeatPhoto = (idx) => {
+      featPhotoIndex = (idx + featActivePhotos.length) % featActivePhotos.length;
+      const src = featActivePhotos[featPhotoIndex];
+
+      featMain.classList.add("is-fading");
+      setTimeout(() => {
+        featMain.src = src;
+        featMain.classList.remove("is-fading");
+        // thumbs active
+        $$("#featThumbs .thumb").forEach((t,i)=> t.classList.toggle("active", i===featPhotoIndex));
+      }, 220);
+    };
+
+    const openFeatures = (sku) => {
+      const cfg = FEATURES[sku];
+      if(!cfg) return;
+
+      featTitle.textContent = cfg.title;
+
+      // photos
+      featActivePhotos = cfg.photos?.length ? cfg.photos : ["assets/placeholder.png"];
+      featThumbs.innerHTML = featActivePhotos.map((src,i)=>`
+        <div class="thumb ${i===0?'active':''}" data-idx="${i}">
+          <img src="${src}" alt="Foto ${i+1}">
+        </div>
+      `).join("");
+
+      $$("#featThumbs .thumb").forEach(th => th.addEventListener("click", () => setFeatPhoto(+th.getAttribute("data-idx"))));
+      featMain.src = featActivePhotos[0];
+      featPhotoIndex = 0;
+
+      // list
+      featList.innerHTML = cfg.items.map(it => `
+        <div class="feat-item">
+          <div class="ico">
+            <svg class="svg-20" viewBox="0 0 24 24"><use href="#${it.icon}"/></svg>
+          </div>
+          <div>
+            <b>${it.title}</b>
+            <p>${it.desc}</p>
+          </div>
+        </div>
+      `).join("");
+
+      openOverlay("featuresOverlay");
+    };
+
+    $$("[data-open-features]").forEach(btn => {
+      btn.addEventListener("click", () => openFeatures(btn.getAttribute("data-open-features")));
+    });
+
+    $("#closeFeatures").addEventListener("click", () => closeOverlay("featuresOverlay"));
+
+    // =================== CART ===================
+    const CART_KEY = "podster_cart_v3";
+
+    const loadCart = () => {
+      try { return JSON.parse(localStorage.getItem(CART_KEY) || "{}"); }
+      catch { return {}; }
+    };
+    const saveCart = (c) => localStorage.setItem(CART_KEY, JSON.stringify(c));
+    const countCart = (c) => Object.values(c).reduce((a,b)=>a+(b.qty||0),0);
+    const totalCart = (c) => Object.keys(c).reduce((sum,sku)=>{
+      const p = PRODUCTS[sku];
+      return sum + (p?.price||0) * (c[sku]?.qty||0);
+    },0);
+
+    const buildOrderText = (cart) => {
+      const lines = [];
+      lines.push(`${STORE} • Pedido`);
+      lines.push(PAY_VIA);
+      lines.push(LOCAL_ONLY);
+      lines.push("");
+      lines.push("Carrito:");
+
+      const items = Object.keys(cart).filter(sku => cart[sku]?.qty > 0);
+      if(items.length === 0){
+        lines.push("- (vacío)");
+      }else{
+        for(const sku of items){
+          const p = PRODUCTS[sku];
+          const qty = cart[sku].qty;
+          const sub = (p.price||0)*qty;
+          lines.push(`- ${p.name} x${qty} = ${fmtMXN(sub)}`);
+        }
+      }
+      lines.push("");
+      lines.push(`Subtotal: ${fmtMXN(totalCart(cart))}`);
+      lines.push("");
+      lines.push("Quiero confirmar y pagar por WhatsApp.");
+      return lines.join("\n");
+    };
+
+    const renderCart = () => {
+      const cart = loadCart();
+      $("#cartCount").textContent = countCart(cart);
+
+      const itemsWrap = $("#cartItems");
+      const totalEl = $("#cartTotal");
+      const items = Object.keys(cart).filter(sku => cart[sku]?.qty > 0);
+
+      if(items.length === 0){
+        itemsWrap.innerHTML = `<div class="foot-note">Carrito vacío. Agrega AirPods Pro 2 para comprar.</div>`;
+        totalEl.textContent = fmtMXN(0);
+        return;
+      }
+
+      itemsWrap.innerHTML = items.map(sku => {
+        const p = PRODUCTS[sku];
+        const qty = cart[sku].qty;
+        const sub = (p.price||0)*qty;
+
+        return `
+          <div class="cart-item">
+            <div class="cart-left">
+              <b>${p.name}</b>
+              <small>${fmtMXN(p.price)} c/u • Subtotal: <b style="color:rgba(255,255,255,.92)">${fmtMXN(sub)}</b></small>
+            </div>
+
+            <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+              <div class="qty">
+                <button type="button" data-dec="${sku}" aria-label="Disminuir">−</button>
+                <span>${qty}</span>
+                <button type="button" data-inc="${sku}" aria-label="Aumentar">+</button>
+              </div>
+              <button class="btn" type="button" data-remove="${sku}" style="padding:10px 12px;">Quitar</button>
+            </div>
+          </div>
+        `;
+      }).join("");
+
+      totalEl.textContent = fmtMXN(totalCart(cart));
+
+      $$("[data-inc]").forEach(b => b.addEventListener("click", () => {
+        const sku = b.getAttribute("data-inc");
+        const cart = loadCart();
+        cart[sku] = cart[sku] || { qty: 0 };
+        cart[sku].qty += 1;
+        saveCart(cart);
+        renderCart();
+      }));
+
+      $$("[data-dec]").forEach(b => b.addEventListener("click", () => {
+        const sku = b.getAttribute("data-dec");
+        const cart = loadCart();
+        if(!cart[sku]) return;
+        cart[sku].qty = Math.max(0, cart[sku].qty - 1);
+        if(cart[sku].qty === 0) delete cart[sku];
+        saveCart(cart);
+        renderCart();
+      }));
+
+      $$("[data-remove]").forEach(b => b.addEventListener("click", () => {
+        const sku = b.getAttribute("data-remove");
+        const cart = loadCart();
+        delete cart[sku];
+        saveCart(cart);
+        renderCart();
+      }));
+    };
+
+    // Add to cart
+    $$(".addCart").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const sku = btn.getAttribute("data-sku");
+        const p = PRODUCTS[sku];
+        if(!p || !p.inStock){
+          toast("Producto agotado");
+          return;
+        }
+        const cart = loadCart();
+        cart[sku] = cart[sku] || { qty: 0 };
+        cart[sku].qty += 1;
+        saveCart(cart);
+        renderCart();
+        toast("Agregado al carrito");
+      });
+    });
+
+    // Open cart
+    const openCart = () => { renderCart(); openOverlay("cartOverlay"); };
+    $("#openCartBtn").addEventListener("click", openCart);
+    $("#openCartBtn2").addEventListener("click", openCart);
+    $("#heroBuy").addEventListener("click", openCart);
+    $("#closeCart").addEventListener("click", () => closeOverlay("cartOverlay"));
+
+    $("#clearCart").addEventListener("click", () => {
+      localStorage.removeItem(CART_KEY);
+      renderCart();
+      toast("Carrito vacío");
+    });
+
+    $("#checkoutWA").addEventListener("click", () => {
+      const cart = loadCart();
+      if(countCart(cart) === 0){
+        toast("Carrito vacío");
+        return;
+      }
+      window.open(waLink(buildOrderText(cart)), "_blank", "noopener");
+    });
+
+    $("#copyOrder").addEventListener("click", async () => {
+      const cart = loadCart();
+      const txt = buildOrderText(cart);
+      try{
+        await navigator.clipboard.writeText(txt);
+        toast("Pedido copiado");
+      }catch{
+        toast("No se pudo copiar");
+      }
+    });
+
+    // WhatsApp links
+    const generalMsg =
+`Qué onda 👋
+Quiero info de AirPods en ${STORE}.
+${LOCAL_ONLY}
+Quiero confirmar y pagar por WhatsApp.`;
+
+    $("#navWA").href = waLink(generalMsg);
+    $("#heroWA").href = waLink(generalMsg);
+    $("#footWA").href = waLink(generalMsg);
+
+    // Direct / Notify links
+    $$("[data-wa-direct]").forEach(a => {
+      const model = a.getAttribute("data-wa-direct");
+      a.href = waLink(`Qué onda 👋\nQuiero ${model} en ${STORE}.\n${LOCAL_ONLY}\nQuiero confirmar y pagar por WhatsApp.`);
+    });
+
+    $$("[data-wa-notify]").forEach(a => {
+      const model = a.getAttribute("data-wa-notify");
+      a.href = waLink(`Qué onda 👋\nMe interesa ${model} en ${STORE}.\nVi que está AGOTADO.\n¿Me avisas cuando vuelva a haber?\n${LOCAL_ONLY}`);
+    });
+
+    // Scroll to products
+    $("#goProducts").addEventListener("click", () => {
+      document.getElementById("productos").scrollIntoView({ behavior:"smooth" });
+    });
+
+    // Init
+    renderCart();
+    setHeroSlide(0);
+  </script>
+</body>
+</html>
